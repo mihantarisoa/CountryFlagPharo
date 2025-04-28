@@ -1,3 +1,6 @@
+"
+This is a class of **EarthMapCountry**
+"
 Class {
 	#name : 'EarthMapCountry',
 	#superclass : 'Object',
@@ -35,6 +38,24 @@ code := aXMLElement attributeAt: 'id'
 ]
 
 { #category : 'accessing' }
+EarthMapCountry >> importCountriesFrom: aString [
+
+]
+
+{ #category : 'converting' }
+EarthMapCountry >> inspectorShape [
+
+	<inspectorPresentationOrder: 0 title: 'Shape'>
+	| canvas |
+	canvas := RSCanvas new.
+	canvas add: self asRSShape.
+	canvas @ RSCanvasController.
+	^ SpRoassalInspectorPresenter new
+		  canvas: canvas;
+		  yourself
+]
+
+{ #category : 'accessing' }
 EarthMapCountry >> name [
 
 	^ name
@@ -44,6 +65,15 @@ EarthMapCountry >> name [
 EarthMapCountry >> name: anObject [
 
 	name := anObject
+]
+
+{ #category : 'printing' }
+EarthMapCountry >> printOn: aStream [
+
+	super printOn: aStream.
+	aStream
+		nextPutAll: ' ';
+		nextPutAll: name
 ]
 
 { #category : 'accessing' }
